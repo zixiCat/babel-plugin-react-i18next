@@ -1,0 +1,60 @@
+{
+  "name": "babel-plugin-react-i18next",
+  "version": "1.0.3",
+  "main": "./babel-plugin-react-i18next.js",
+  "homepage": "https://github.com/zixiCat/babel-plugin-react-i18next",
+  "description": "A babel plugin to help you to invoke some i18n-related translation functions globally.",
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "lint:fix": "eslint --fix . --ext .ts,.tsx,.js"
+  },
+  "keywords": [
+    "babel-plugin",
+    "i18next",
+    "i18n",
+    "react",
+    "react-i18next",
+    "internationalization",
+    "localization"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zixiCat/babel-plugin-react-i18next"
+  },
+  "license": "MIT",
+  "author": "zixicat",
+  "dependencies": {
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.53",
+    "@types/react-dom": "^16.9.8",
+    "i18next": "^19.8.3",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-i18next": "^11.7.3",
+    "react-scripts": "4.0.0",
+    "typescript": "^4.0.3",
+    "web-vitals": "^0.2.4"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "eslint": "^7.13.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.21.5",
+    "prettier": "2.1.2",
+    "react-app-rewired": "^2.1.6"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

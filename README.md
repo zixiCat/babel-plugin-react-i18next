@@ -74,7 +74,7 @@ JSXElement (only 2 levels of relationship)
 JSXAttribute (it will not change the className attribute)
 ```diff  
 -   <div attr='What a save!'></div>
-+   <div attr={t(='What a save!')}></div>
++   <div attr={t('What a save!')}></div>
 ```
 
 ## Bug tracker

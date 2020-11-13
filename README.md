@@ -77,6 +77,13 @@ JSXAttribute (it will not change the className attribute)
 +   <div attr={t('What a save!')}></div>
 ```
 
+Of course, some modules had been imported
+```diff  
++   import {Trans} from "react-i18next";
++   import i18next from "i18next";
+```
+
+
 ## Bug tracker
 
 If you find a bug, please report it [here on Github](https://github.com/zixiCat/babel-plugin-react-i18next/issues)!

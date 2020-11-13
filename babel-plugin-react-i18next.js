@@ -32,20 +32,22 @@ module.exports = function({types: t}) {
 
   const hasTransPartImported = (specifiers) => {
     return specifiers
-        .findIndex((innerItem) => innerItem?.imported?.name === 'Trans') > -1;
+        .findIndex((innerItem) => (innerItem &&
+            innerItem.imported && innerItem.imported.name) === 'Trans') > -1;
   };
-  const hasTransImported = (path)=>{
+  const hasTransImported = (path) => {
     return path.node.body
         .findIndex((item) =>
-          (item.source?.value === 'react-i18next' &&
-              hasTransPartImported(item.specifiers))) >-1;
+          ((item.source && item.source.value) === 'react-i18next' &&
+                hasTransPartImported(item.specifiers))) > -1;
   };
 
-  const hasI18nextImported = (path)=>{
-    return path.node.body.find((item) => item.source?.value === 'i18next');
+  const hasI18nextImported = (path) => {
+    return path.node.body.find((item) => (item.source &&
+        item.source.value) === 'i18next');
   };
 
-  const has2LvRelationship = (path) =>{
+  const has2LvRelationship = (path) => {
     return (path.node.children
         .findIndex((item) => item.type === 'JSXElement' &&
                 (item.children.findIndex((innerItem) => {
@@ -65,7 +67,7 @@ module.exports = function({types: t}) {
         }
       },
       JSXText(path, state) {
-        if (state.JSXText!==false) {
+        if (state.JSXText !== false) {
           if (path.node.value.trim()) {
             path.replaceWith(
                 t.jsxExpressionContainer(
@@ -76,7 +78,7 @@ module.exports = function({types: t}) {
         }
       },
       JSXExpressionContainer(path, state) {
-        if (state.JSXExpressionContainer!==false) {
+        if (state.JSXExpressionContainer !== false) {
           if (
             (path.node.expression.type === 'StringLiteral' &&
                   path.node.expression.value) ||
@@ -87,16 +89,16 @@ module.exports = function({types: t}) {
         }
       },
       JSXElement(path, state) {
-        if (state.JSXElement!==false) {
+        if (state.JSXElement !== false) {
           if (has2LvRelationship(path)) {
             path.node.children = [transEle(path.node.children)];
           }
         }
       },
       JSXAttribute(path, state) {
-        if (state.JSXAttribute!==false) {
-          if (path.node.value.type === 'StringLiteral'&&
-              path.node.name.name !=='className') {
+        if (state.JSXAttribute !== false) {
+          if (path.node.value.type === 'StringLiteral' &&
+              path.node.name.name !== 'className') {
             path.node.value = t.jsxExpressionContainer(
                 translateFn(path.node.value),
             );

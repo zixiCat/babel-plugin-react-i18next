@@ -21,7 +21,7 @@ const App = () => {
       }} onClick={()=>{
         i18next.changeLanguage('en')
             .then(()=>setCurLng('en'));
-      }}>switch to English</button>
+      }}>Switch to English</button>
 
       <div>
         <div>{'What a save!'}</div></div>

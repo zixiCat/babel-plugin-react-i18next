@@ -1,10 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
+import i18next from 'i18next';
 import About from './About';
 import './app.css';
 
 const App = () => {
+  // update Components
+  const [curLng, setCurLng] = useState<string>('en');
+
   return (
     <div>
+      <p>The current language is {curLng}</p>
+
+      <button onClick={()=>{
+        i18next.changeLanguage('cn')
+            .then(()=>setCurLng('cn'));
+      }}>切换至中文</button>
+
+      <button style={{
+        margin: '0 0 20px 20px',
+      }} onClick={()=>{
+        i18next.changeLanguage('en')
+            .then(()=>setCurLng('en'));
+      }}>switch to English</button>
+
       <div>
         <div>{'What a save!'}</div></div>
       <div>

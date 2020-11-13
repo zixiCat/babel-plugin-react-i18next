@@ -1,4 +1,4 @@
-import i18n from 'i18next';
+import i18next from 'i18next';
 import {initReactI18next} from 'react-i18next';
 
 const resources = {
@@ -9,11 +9,19 @@ const resources = {
       'Hello <1>zixiCat!</1>': 'WOW! WOW! WOW!',
     },
   },
+  cn: {
+    translation: {
+      'What a save!': '谢谢！谢谢！谢谢！',
+      'what-a-save': '谢谢！谢谢！谢谢！',
+      'Hello <1>zixiCat!</1>': '哇！哇！哇！',
+    },
+  },
 };
 
-i18n.use(initReactI18next).init({
+i18next.use(initReactI18next).init({
   resources,
   lng: 'en',
+  fallbackLng: ['en', 'cn'],
   keySeparator: false,
   interpolation: {
     escapeValue: false,
@@ -28,4 +36,4 @@ i18n.use(initReactI18next).init({
   },
 });
 
-export default i18n;
+export default i18next;

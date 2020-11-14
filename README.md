@@ -23,7 +23,7 @@ A babel plugin to help you to invoke some i18n-related translation functions glo
 
 First of all, make sure `react-i18next` and `i18next` are both installed, if not, install them.
 
-Then Add `babel-plugin-react-i18next` to the plugins section of your babel configuration file such as `.babelrc`.
+Then add `babel-plugin-react-i18next` to the plugins section of your babel configuration file such as `.babelrc`.
 Once done, When you initialize i18n, you don't have to invoke i18n-related functions in JSX/TSX files.
 
 ```json

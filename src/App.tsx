@@ -4,8 +4,8 @@ import About from './About';
 import './app.css';
 
 const App = () => {
-  // update Components
-  const [curLng, setCurLng] = useState<string>('en');
+  // update components
+  const [curLng, setCurLng] = useState<'en'|'cn'>('en');
 
   return (
     <div>

@@ -68,10 +68,11 @@ module.exports = function({types: t}) {
       },
       JSXText(path, state) {
         if (state.JSXText !== false) {
-          if (path.node.value.trim()) {
+          const text = path.node.value.trim();
+          if (text) {
             path.replaceWith(
                 t.jsxExpressionContainer(
-                    translateFn(t.stringLiteral(path.node.value)),
+                    translateFn(t.stringLiteral(text)),
                 ),
             );
           }
@@ -91,6 +92,7 @@ module.exports = function({types: t}) {
       JSXElement(path, state) {
         if (state.JSXElement !== false) {
           if (has2LvRelationship(path)) {
+            console.log(path.node.children);
             path.node.children = [transEle(path.node.children)];
           }
         }

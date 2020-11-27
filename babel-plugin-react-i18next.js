@@ -1,8 +1,8 @@
-module.exports = function({types: t}) {
+module.exports = function ({ types: t }) {
   // import {Trans} from "react-i18next";
   const specifiersTrans = t.importSpecifier(
-      t.identifier('Trans'),
-      t.identifier('Trans'),
+    t.identifier('Trans'),
+    t.identifier('Trans')
   );
   const sourceTrans = t.stringLiteral('react-i18next');
   const importTrans = t.importDeclaration([specifiersTrans], sourceTrans);
@@ -21,39 +21,49 @@ module.exports = function({types: t}) {
   // create Trans element
   const transEle = (children) => {
     const OpeningElement = t.jsxOpeningElement(
-        t.jsxIdentifier('Trans'),
-        [],
-        false,
+      t.jsxIdentifier('Trans'),
+      [],
+      false
     );
     const ClosingElement = t.jsxClosingElement(t.jsxIdentifier('Trans'));
     return t.jsxElement(OpeningElement, ClosingElement, children, false);
   };
 
-
   const hasTransPartImported = (specifiers) => {
-    return specifiers
-        .findIndex((innerItem) => (innerItem &&
-            innerItem.imported && innerItem.imported.name) === 'Trans') > -1;
+    return (
+      specifiers.findIndex(
+        (innerItem) =>
+          (innerItem && innerItem.imported && innerItem.imported.name) ===
+          'Trans'
+      ) > -1
+    );
   };
   const hasTransImported = (path) => {
-    return path.node.body
-        .findIndex((item) =>
-          ((item.source && item.source.value) === 'react-i18next' &&
-                hasTransPartImported(item.specifiers))) > -1;
+    return (
+      path.node.body.findIndex(
+        (item) =>
+          (item.source && item.source.value) === 'react-i18next' &&
+          hasTransPartImported(item.specifiers)
+      ) > -1
+    );
   };
 
   const hasI18nextImported = (path) => {
-    return path.node.body.find((item) => (item.source &&
-        item.source.value) === 'i18next');
+    return path.node.body.find(
+      (item) => (item.source && item.source.value) === 'i18next'
+    );
   };
 
   const has2LvRelationship = (path) => {
-    return (path.node.children
-        .findIndex((item) => item.type === 'JSXElement' &&
-                (item.children.findIndex((innerItem) => {
-                  return innerItem.type === 'JSXElement';
-                }) === -1)) > -1) &&
-        path.node.openingElement.name.name !== 'Trans';
+    return (
+      path.node.children.findIndex(
+        (item) =>
+          item.type === 'JSXElement' &&
+          item.children.findIndex((innerItem) => {
+            return innerItem.type === 'JSXElement';
+          }) === -1
+      ) > -1 && path.node.openingElement.name.name !== 'Trans'
+    );
   };
 
   return {
@@ -67,30 +77,28 @@ module.exports = function({types: t}) {
         }
       },
       JSXText(path, state) {
-        if (state.JSXText !== false) {
+        if (state.opts.JSXText !== false) {
           const text = path.node.value.trim();
           if (text) {
             path.replaceWith(
-                t.jsxExpressionContainer(
-                    translateFn(t.stringLiteral(text)),
-                ),
+              t.jsxExpressionContainer(translateFn(t.stringLiteral(text)))
             );
           }
         }
       },
       JSXExpressionContainer(path, state) {
-        if (state.JSXExpressionContainer !== false) {
+        if (state.opts.JSXExpressionContainer !== false) {
           if (
             (path.node.expression.type === 'StringLiteral' &&
-                  path.node.expression.value) ||
-              path.node.expression.type === 'ConditionalExpression'
+              path.node.expression.value) ||
+            path.node.expression.type === 'ConditionalExpression'
           ) {
             path.node.expression = translateFn(path.node.expression);
           }
         }
       },
       JSXElement(path, state) {
-        if (state.JSXElement !== false) {
+        if (state.opts.JSXElement !== false) {
           if (has2LvRelationship(path)) {
             console.log(path.node.children);
             path.node.children = [transEle(path.node.children)];
@@ -98,11 +106,13 @@ module.exports = function({types: t}) {
         }
       },
       JSXAttribute(path, state) {
-        if (state.JSXAttribute !== false) {
-          if (path.node.value.type === 'StringLiteral' &&
-              path.node.name.name !== 'className') {
+        if (state.opts.JSXAttribute !== false) {
+          if (
+            path.node.value.type === 'StringLiteral' &&
+            path.node.name.name !== 'className'
+          ) {
             path.node.value = t.jsxExpressionContainer(
-                translateFn(path.node.value),
+              translateFn(path.node.value)
             );
           }
         }

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/zixiCat/babel-plugin-react-i18next/compare/v1.1.0...v1.1.1) (2020-11-27)
+
+
+### Bug Fixes
+
+* babel options property ([db227d2](https://github.com/zixiCat/babel-plugin-react-i18next/commit/db227d2a318a039047a1f72bbfa05c37d0a6e990))
+
 ## [1.1.0](https://github.com/zixiCat/babel-plugin-react-i18next/compare/v1.0.4...v1.1.0) (2020-11-22)
 
 

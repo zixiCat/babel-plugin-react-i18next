@@ -10,7 +10,6 @@ const App = () => {
   return (
     <div>
       <p>The current language is {curLng}</p>
-
       <button
         onClick={() => {
           i18next.changeLanguage('cn').then(() => setCurLng('cn'));

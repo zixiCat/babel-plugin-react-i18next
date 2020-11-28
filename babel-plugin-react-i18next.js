@@ -100,7 +100,6 @@ module.exports = function ({ types: t }) {
       JSXElement(path, state) {
         if (state.opts.JSXElement !== false) {
           if (has2LvRelationship(path)) {
-            console.log(path.node.children);
             path.node.children = [transEle(path.node.children)];
           }
         }

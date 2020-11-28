@@ -10,15 +10,7 @@ module.exports = function override(config, env) {
           '@babel/preset-react',
           '@babel/preset-typescript',
         ],
-        plugins: [
-          './test.js',
-          [
-            './babel-plugin-react-i18next.js',
-            {
-              JSXText: false,
-            },
-          ],
-        ],
+        plugins: ['./babel-plugin-react-i18next.js'],
       },
     },
   });

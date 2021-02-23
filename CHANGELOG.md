@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/zixiCat/babel-plugin-react-i18next/compare/v1.1.0...v1.1.2) (2021-02-23)
+
+
+### Bug Fixes
+
+* **basic:** fix that page can not be opened because of dependencies ([4a09731](https://github.com/zixiCat/babel-plugin-react-i18next/commit/4a097310540fa21a0c7837f0ecad5ed6eba6660e))
+* add customize-cra ([9d3c1b7](https://github.com/zixiCat/babel-plugin-react-i18next/commit/9d3c1b74a0b7d856eb381ffa869b1f4f4dc1a649))
+* babel options property ([db227d2](https://github.com/zixiCat/babel-plugin-react-i18next/commit/db227d2a318a039047a1f72bbfa05c37d0a6e990))
+* config-overriders settings ([66f139c](https://github.com/zixiCat/babel-plugin-react-i18next/commit/66f139c6e0829ce97dc425195f299dc7d7240012))
+
 ### [1.1.1](https://github.com/zixiCat/babel-plugin-react-i18next/compare/v1.1.0...v1.1.1) (2020-11-27)
 
 

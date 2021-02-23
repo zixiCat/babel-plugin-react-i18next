@@ -1,44 +1,28 @@
-import React, { useState } from 'react';
+// import React from 'react';
+// import { Trans } from 'react-i18next';
+// import './app.css';
+
+// const App = () => {
+//   return (
+//     <div>
+//       <Trans>What a save!</Trans>
+//     </div>
+//   );
+// };
+
+// export default App;
+
+import React from 'react';
+// import { Trans } from 'react-i18next';
 import i18next from 'i18next';
-import About from './About';
 import './app.css';
 
-const App = () => {
-  // update components
-  const [curLng, setCurLng] = useState<'en' | 'cn'>('en');
+const a: string = '12';
 
+const App = () => {
   return (
     <div>
-      <p>The current language is {curLng}</p>
-      <button
-        onClick={() => {
-          i18next.changeLanguage('cn').then(() => setCurLng('cn'));
-        }}
-      >
-        切换至中文
-      </button>
-
-      <button
-        style={{
-          margin: '0 0 20px 20px',
-        }}
-        onClick={() => {
-          i18next.changeLanguage('en').then(() => setCurLng('en'));
-        }}
-      >
-        Switch to English
-      </button>
-
-      <div>
-        <div>{'What a save!'}</div>
-      </div>
-      <div>
-        <div className="what-a-save">
-          Hello <div>zixiCat!</div>
-        </div>
-        <About />
-        <input placeholder="What a save!" />
-      </div>
+      <div>{i18next.t(a === '12' ? i18next.t('ta1-s') : 'ds')}</div>
     </div>
   );
 };

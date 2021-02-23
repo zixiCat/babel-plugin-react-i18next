@@ -89,33 +89,34 @@ module.exports = function ({ types: t }) {
       JSXExpressionContainer(path, state) {
         if (state.opts.JSXExpressionContainer !== false) {
           if (
-            (path.node.expression.type === 'StringLiteral' &&
-              path.node.expression.value) ||
-            path.node.expression.type === 'ConditionalExpression'
+            path.node.expression.type === 'StringLiteral' &&
+            path.node.expression.value
           ) {
             path.node.expression = translateFn(path.node.expression);
+          } else if (path.node.expression.type === 'ConditionalExpression') {
+            // const expre
           }
         }
       },
-      JSXElement(path, state) {
-        if (state.opts.JSXElement !== false) {
-          if (has2LvRelationship(path)) {
-            path.node.children = [transEle(path.node.children)];
-          }
-        }
-      },
-      JSXAttribute(path, state) {
-        if (state.opts.JSXAttribute !== false) {
-          if (
-            path.node.value.type === 'StringLiteral' &&
-            path.node.name.name !== 'className'
-          ) {
-            path.node.value = t.jsxExpressionContainer(
-              translateFn(path.node.value)
-            );
-          }
-        }
-      },
+      // JSXElement(path, state) {
+      //   if (state.opts.JSXElement !== false) {
+      //     if (has2LvRelationship(path)) {
+      //       path.node.children = [transEle(path.node.children)];
+      //     }
+      //   }
+      // },
+      // JSXAttribute(path, state) {
+      //   if (state.opts.JSXAttribute !== false) {
+      //     if (
+      //       path.node.value.type === 'StringLiteral' &&
+      //       path.node.name.name !== 'className'
+      //     ) {
+      //       path.node.value = t.jsxExpressionContainer(
+      //         translateFn(path.node.value)
+      //       );
+      //     }
+      //   }
+      // },
     },
   };
 };

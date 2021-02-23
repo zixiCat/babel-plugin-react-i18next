@@ -5,6 +5,12 @@
     "@babel/preset-typescript"
   ],
   "plugins": [
-    "./babel-plugin-react-i18next.js"
+    [
+      "./babel-plugin-react-i18next",
+      {
+        "JSXText": false,
+        "JXSExpressionContainer": false
+      }
+    ]
   ]
 }

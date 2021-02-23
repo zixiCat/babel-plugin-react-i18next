@@ -5,7 +5,7 @@ const resources = {
   en: {
     translation: {
       'What a save!': 'Thanks! Thanks! Thanks!',
-      'what-a-save': 'thanks-thanks-thanks',
+      'ta1-s': 'thanks-thanks-thanks',
       'Hello <1>zixiCat!</1>': 'WOW! WOW! WOW!',
     },
   },

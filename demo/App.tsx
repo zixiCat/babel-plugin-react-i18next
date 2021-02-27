@@ -13,8 +13,6 @@
 // export default App;
 
 import React from 'react';
-// import { Trans } from 'react-i18next';
-import i18next from 'i18next';
 import './app.css';
 
 const a: string = '12';
@@ -22,7 +20,9 @@ const a: string = '12';
 const App = () => {
   return (
     <div>
-      <div>{i18next.t(a === '12' ? i18next.t('ta1-s') : 'ds')}</div>
+      <div>{a === '12' ? <div>ta1-s1</div> : 'ds'}</div>
+      {/* <div>{a === '12' ? 'ta1-s1' : 'ds'}</div> */}
+      {/* <div>{i18next.t(a && 'ta1-s')}</div> */}
     </div>
   );
 };

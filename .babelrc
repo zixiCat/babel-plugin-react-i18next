@@ -6,7 +6,7 @@
   ],
   "plugins": [
     [
-      "./babel-plugin-react-i18next",
+      "./babel-plugin-react-i18next.js",
       {
         "JSXText": false,
         "JXSExpressionContainer": false
